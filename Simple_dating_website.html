@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<style type="text/css">
+fieldset{
+	background-color: lightyellow;
+	border:10px solid yellow;
+	margin-bottom: 10px;
+	width: 720px;
+}
+label{
+	width: 180px;
+	display: inline-block;
+	right-align;
+	top-align;
+	checkbox width:auto;
+	radio width:auto;
+	text-align: left;
+}
+textarea{
+	width:360px;
+	height:50px;
+}
+label:hover{font-size: 40px;}
+input:hover{font-size: 40px;}
+Â </style>
+</head>
+
+<body>
+<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+<h1><b>Please Enter Your Details For Our Dating Website!</b></h1>
+
+<fieldset>
+	<legend>Your Face</legend>
+	<label for="image">Your image:</label> <form method="post" action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" enctype="multipart/form-data">
+	<input type="file" name="fileToUpload" required><br>
+	<label for="image">Image Preview:</label> <img id="preview">
+	</form>
+</fieldset>
+
+<fieldset>
+	<legend>Your General Details</legend>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" placeholder="Your full name">
+		<br>
+	</form>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+		<label for="gender">Gender:</label> <input type="radio" name="gender" id="gender" value="male">Male
+		<input type="radio" name="gender" id="gender" value="female">Female
+	</form>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+	<label for="age">Age:</label>
+		<input type="number" min="0" max="99" step="1" value="18" name="age" required>
+	</form>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+		<label for="birthday">Date of birth:</label>
+		<input type="date" name="birthday">
+	</form>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+		<label for="color">Favourite color:</label>
+		<input type="color" name="color">
+	</form>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+		<label for="country">Which country:</label>
+		<select name="countries">
+		<option value="usa">United States</option>
+		<option value="uk">United Kingdom</option>
+		<option value="hk">Hong Kong</option>
+		<option value="ina">Indonesia</option>
+		<option value="sg">Singapore</option>
+		<option value="no">No Selection</option>	
+		</select>
+	</form>
+</fieldset>
+
+<fieldset>
+	<legend>Your Indicators</legend>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+	<label for="height">Height:</label>
+	Short <input type="range" min="0" max="100" step="1" value="50" name="height">Tall <br>
+	<label for="salary">Salary:</label>
+	Poor <input type="range" min="0" max="100" step="1" value="50" name="salary">Rich	
+	</form>
+</fieldset>
+
+<fieldset>
+	<legend>Your Contact Information</legend>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+		<label for="email">Email:</label>
+		<input type="email" name="email"> 
+		<br>
+		<label for="mobile">Mobile:</label>
+		<input type="tel" name="mobile">
+		<br>
+		<label for="address">Address:</label>
+		<textarea rows="3" cols="60" name="address">
+		</textarea>
+		<br>
+		<label for="contact">Method to contact you:</label>
+		<input type="checkbox" name="Email">Email <input type="checkbox" name="whatsapp">Whatsapp <input type="checkbox" name="inAppChat">In-App chat
+	</form>
+</fieldset>
+<input type="submit" name="submit" value="Submit!">
+
+</body>
+
+</html>
