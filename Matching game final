@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matching Game</title>
+</head>
+<style>
+    #leftSide{
+        position:absolute;
+        height:500px;
+        width: 500px;
+        padding: 5px;
+    }
+    #rightSide{
+        position:absolute;
+        height:500px;
+        width: 500px;
+        left: 500px; 
+        border-left: 1px solid black ;
+        padding: 5px;
+    }
+    img{
+        position:absolute;
+    }
+</style>
+
+<script>
+var numberOfFaces = 5;
+var theLeftSide =document.getElementById('leftSide');
+//level of game . it is a extra feature provided in game.
+var level=1;
+//function for generating face dynamically
+function generateFaces(){
+     
+     //printing level of game . it is a extra feature provided in game.
+    document.getElementById("level").innerHTML = "<h4 style='color:blue'><b>Level :</b>" + level+"</h4>" ;
+    for (i=0;i<numberOfFaces;i++){
+        var smiley = document.createElement("img");
+        smiley.src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+        smiley.alt="smiley";
+        var h= 400 * Math.random();
+        smiley.style.top = Math.floor(h)+"px";
+        var w=  400* Math.random();
+        smiley.style.left = Math.floor(w)+"px";
+        document.getElementById("leftSide").appendChild(smiley);
+    }
+        //code for generating rightSide image by cloning right side and delete last child
+        var theRightSide=document.getElementById("rightSide");
+        var leftSideImages = document.getElementById("leftSide").cloneNode(true);
+        var this_node=leftSideImages.lastChild;
+        this_node.parentNode.removeChild(this_node);
+        document.getElementById("rightSide").appendChild(leftSideImages);
+        
+        //code for game control
+        var theBody =document.getElementsByTagName("body")[0];
+     
+        //set event on body except than last child
+        theBody.onclick = function gameOver() {
+       theBody.onclick = null;
+       document.getElementById('leftSide').lastChild.onclick = null;
+        //updation of level of game . it is a extra feature provided in game.
+        document.getElementById("level").innerHTML = "<h4 style='color:red'><b>GAME OVER !!</b></h4>";
+        alert("Game Over!! \n \n level : "+ level + "\n \n Try next time.");
+       }; 
+       //set event on last child of leftside
+        document.getElementById('leftSide').lastChild.onclick=
+        function nextLevel(event){
+        event.stopPropagation();
+        numberOfFaces += 5;
+        level++;
+        //removing all node of leftside
+        var myNode = document.getElementById("leftSide");
+        while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+        }
+        //removing all node of rightSide
+        var myNode = document.getElementById("rightSide");
+        while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+        }
+        generateFaces();
+        };
+}
+    
+</script>
+
+<!--Body start-->
+<body onload="generateFaces()">
+
+<!-- Title of game-->
+<h1>Matching Game</h1>
+
+<!--instruction-->
+<p>Click on the extra smiling face on the left.</p>
+
+<!--level-->
+<div id="level"></div>
+
+<!--Leftside div start-->
+<div id="leftSide"></div>
+
+<!--right side div start-->
+<div id="rightSide"></div>
+
+</body>
+</html>
